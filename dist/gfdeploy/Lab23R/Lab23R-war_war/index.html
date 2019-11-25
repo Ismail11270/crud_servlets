@@ -6,31 +6,33 @@ and open the template in the editor.
 -->
 <html>
     <head>
-        <title>TODO supply a title</title>
+        <title>Departments & Employees CRUD</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
-        <a href="NewServlet">Text servlet</a>
-        
-        <form action="" class="form">
+        <a href="crud" style="margin-left: 15px">CRUD</a>
+
+        <form action="crud" class="form">
             <p>Select an entity</p>
             <select name="entity_selection">
                 <option value="department">Department</option>
                 <option value="employee">Employee</option>
             </select>
-            
+
             <br/>
             <p>Select operation</p>
-            <select name="operation_select">
-                <option value="add">Add</option>
-                <option value="find">Find</option>
-                <option value="update">Update</option>
-                <option value="remove">Remove</option>                
+            <select name="operation_selection">
+                <option value="1">Add</option>
+                <option value="2">Find</option>
+                <option value="3">Update</option>
+                <option value="4">Remove</option>                
             </select>
             <br/>
             <br/>
-            <input type="submit" value="GO"/>
+            <input type="submit" value="GO" />
+            
         </form>
+        
     </body>
 </html>

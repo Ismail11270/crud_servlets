@@ -2,23 +2,66 @@
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
     <servlet>
         <servlet-name>EmployeeServlet</servlet-name>
-        <servlet-class>pl.polsl.ismoil.atajanov.servlet.EmployeeServlet</servlet-class>
+        <servlet-class>pl.polsl.ismoil.atajanov.lab3.servlet.employee.EmployeeServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>DepartmentServlet</servlet-name>
-        <servlet-class>pl.polsl.ismoil.atajanov.servlet.DepartmentServlet</servlet-class>
+        <servlet-name>CrudServlet</servlet-name>
+        <servlet-class>pl.polsl.ismoil.atajanov.lab3.servlet.CrudServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AddDepartmentServlet</servlet-name>
+        <servlet-class>pl.polsl.ismoil.atajanov.lab3.servlet.department.AddDepartmentServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DeleteDepartmentServlet</servlet-name>
+        <servlet-class>pl.polsl.ismoil.atajanov.lab3.servlet.department.DeleteDepartmentServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ErrorServlet</servlet-name>
+        <servlet-class>pl.polsl.ismoil.atajanov.lab3.servlet.ErrorServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>FindDepartmentServlet</servlet-name>
+        <servlet-class>pl.polsl.ismoil.atajanov.lab3.servlet.department.FindDepartmentServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UpdateDepartmentServlet</servlet-name>
+        <servlet-class>pl.polsl.ismoil.atajanov.lab3.servlet.department.UpdateDepartmentServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>EmployeeServlet</servlet-name>
-        <url-pattern>/EmployeeServlet</url-pattern>
+        <url-pattern>/employee</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>DepartmentServlet</servlet-name>
-        <url-pattern>/DepartmentServlet</url-pattern>
+        <servlet-name>CrudServlet</servlet-name>
+        <url-pattern>/crud</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddDepartmentServlet</servlet-name>
+        <url-pattern>/department/add</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeleteDepartmentServlet</servlet-name>
+        <url-pattern>/department/delete</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ErrorServlet</servlet-name>
+        <url-pattern>/error/*</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>FindDepartmentServlet</servlet-name>
+        <url-pattern>/department/find</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdateDepartmentServlet</servlet-name>
+        <url-pattern>/department/update</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
             30
         </session-timeout>
     </session-config>
+    <welcome-file-list>
+        <welcome-file>index.html</welcome-file>
+    </welcome-file-list>
 </web-app>
