@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package pl.polsl.ismoil.atajanov.lab3.servlet.department;
 
 import java.io.IOException;
@@ -21,15 +16,19 @@ import pl.polsl.ismoil.atajanov.lab3.beans.DepartmentServiceBean;
 import pl.polsl.ismoil.atajanov.lab3.model.Department;
 
 /**
- *
+ * Servlet used to find departments
  * @author Ismail
+ * @version 1.0
  */
 public class FindDepartmentServlet extends HttpServlet {
 
+    
+    /**
+     * Ejb injection
+     */
     @EJB
     DepartmentServiceBean departmentService;
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
      *
@@ -60,7 +59,6 @@ public class FindDepartmentServlet extends HttpServlet {
             out.println("<input type='number' name='dep_id' placeholder='Department id...'/><br/>");
             out.println("<input type='submit' value='Find'/>");
             out.println("</form><br/>");
-
             out.println("</body>");
             out.println("</html>");
         }

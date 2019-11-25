@@ -16,11 +16,15 @@ import pl.polsl.ismoil.atajanov.lab3.beans.DepartmentServiceBean;
 import pl.polsl.ismoil.atajanov.lab3.model.Department;
 
 /**
- *
+ * Servlet used to add departments
  * @author Ismail
+ * @version 1.0
  */
 public class AddDepartmentServlet extends HttpServlet {
 
+    /**
+     * Ejb injection
+     */
     @EJB
     DepartmentServiceBean departmentService;
 

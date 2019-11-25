@@ -19,6 +19,6 @@
         <property name="allowPublicKeyRetrieval" value="true"/>
         <property name="URL" value="jdbc:mysql://localhost:3306/lab_db"/>
         <property name="User" value="root"/>
-        <property name="Password" value="Ismail_05-09"/>
+        <property name="Password" value="root"/>
     </jdbc-connection-pool>
 </resources>

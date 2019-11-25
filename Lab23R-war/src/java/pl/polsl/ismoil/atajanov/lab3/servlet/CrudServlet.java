@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package pl.polsl.ismoil.atajanov.lab3.servlet;
 
 import java.io.IOException;
@@ -14,8 +9,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
+ * Servlet used to redirect to CRUD servlet According to the operation and
+ * entity selecteion
  *
  * @author Ismail
+ * @version 1.0
  */
 public class CrudServlet extends HttpServlet {
 
@@ -31,30 +29,26 @@ public class CrudServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            String entitySelection = request.getParameter("entity_selection");
-            int operationSelection = Integer.parseInt(request.getParameter("operation_selection"));
-            switch (operationSelection) {
-                case 1:
-                    request.getRequestDispatcher("/" + entitySelection + "/add").
-                            forward(request, response);
-                case 2:
-                    request.getRequestDispatcher("/" + entitySelection + "/find").
-                            forward(request, response);
-                case 3:
-                    request.getRequestDispatcher("/" + entitySelection + "/update").
-                            forward(request, response);
-                case 4:
-                    request.getRequestDispatcher("/" + entitySelection + "/delete").
-                            forward(request, response);
-                default:
-                //error redirect
-                }
 
+        String entitySelection = request.getParameter("entity_selection");
+        int operationSelection = Integer.parseInt(request.getParameter("operation_selection"));
+        switch (operationSelection) {
+            case 1:
+                request.getRequestDispatcher("/" + entitySelection + "/add").
+                        forward(request, response);
+            case 2:
+                request.getRequestDispatcher("/" + entitySelection + "/find").
+                        forward(request, response);
+            case 3:
+                request.getRequestDispatcher("/" + entitySelection + "/update").
+                        forward(request, response);
+            case 4:
+                request.getRequestDispatcher("/" + entitySelection + "/delete").
+                        forward(request, response);
         }
+
     }
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
      *
@@ -91,6 +85,6 @@ public class CrudServlet extends HttpServlet {
     @Override
     public String getServletInfo() {
         return "Short description";
-    }// </editor-fold>
+    }
 
 }

@@ -33,6 +33,26 @@ public class Employee implements Serializable{
     public static final String FIND_ALL = "Employee.findAll";
     
     /**
+     * Default constructor
+     */
+    public Employee(){
+        
+    }
+    
+    /**
+     * Constructor with parameters
+     * @param fullName employee's name
+     * @param dateOfBirth employee's date of birth
+     * @param department employee's department
+     */
+    public Employee(String fullName, Date dateOfBirth, Department department){
+        this.fullName = fullName;
+        this.birthDate = dateOfBirth;
+        this.department = department;
+    }
+    
+    
+    /**
      * Primary key value
      */
     @Id

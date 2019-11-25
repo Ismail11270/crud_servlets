@@ -31,11 +31,20 @@ public class Department implements Serializable {
      */
     public static final String FIND_ALL = "Department.findAll";
     
+    
+    /**
+     * Constructor with parameters
+     * @param name name of the department
+     * @param address address of the department
+     */
     public Department(String name, String address){
         this.departmentName = name;
         this.address = address;
     }
     
+    /**
+     * Default constructor
+     */
     public Department(){
         
     }

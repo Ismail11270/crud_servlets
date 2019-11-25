@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package pl.polsl.ismoil.atajanov.lab3.servlet.department;
 
 import java.io.IOException;
@@ -21,12 +16,15 @@ import pl.polsl.ismoil.atajanov.lab3.beans.DepartmentServiceBean;
 import pl.polsl.ismoil.atajanov.lab3.model.Department;
 
 /**
- *
+ * Servlet used to delete departments
  * @author Ismail
  * @version 1.0
  */
 public class DeleteDepartmentServlet extends HttpServlet {
 
+    /**
+     * Ejb injection
+     */
     @EJB
     DepartmentServiceBean departmentService;
 
@@ -56,8 +54,7 @@ public class DeleteDepartmentServlet extends HttpServlet {
             out.println("<form action=\"department/delete\" method=\"post\" >");
             out.println("<br/><label>Enter an id of department you want to delete, make sure it exists.</label></br>");
             out.println("<input type=\"number\" placeholder=\"Department id...\" name=\"dep_id\"/>");
-            out.println("<input type=\"submit\" value=\"DELETE\"/>");
-            out.println("<h2>Or select a department from the list</h2>");
+            out.println("<br/><input type=\"submit\" value=\"DELETE\"/>");
             out.println("</form>");
             out.println("</body>");
             out.println("</html>");

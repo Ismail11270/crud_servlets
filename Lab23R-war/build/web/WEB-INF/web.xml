@@ -28,6 +28,22 @@
         <servlet-name>UpdateDepartmentServlet</servlet-name>
         <servlet-class>pl.polsl.ismoil.atajanov.lab3.servlet.department.UpdateDepartmentServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AddEmployeeServlet</servlet-name>
+        <servlet-class>pl.polsl.ismoil.atajanov.lab3.servlet.employee.AddEmployeeServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DeleteEmployeeServlet</servlet-name>
+        <servlet-class>pl.polsl.ismoil.atajanov.lab3.servlet.employee.DeleteEmployeeServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>FindEmployeeServlet</servlet-name>
+        <servlet-class>pl.polsl.ismoil.atajanov.lab3.servlet.employee.FindEmployeeServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UpdateEmployeeServlet</servlet-name>
+        <servlet-class>pl.polsl.ismoil.atajanov.lab3.servlet.employee.UpdateEmployeeServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>EmployeeServlet</servlet-name>
         <url-pattern>/employee</url-pattern>
@@ -55,6 +71,22 @@
     <servlet-mapping>
         <servlet-name>UpdateDepartmentServlet</servlet-name>
         <url-pattern>/department/update</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddEmployeeServlet</servlet-name>
+        <url-pattern>/employee/add</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeleteEmployeeServlet</servlet-name>
+        <url-pattern>/employee/delete</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>FindEmployeeServlet</servlet-name>
+        <url-pattern>/employee/find</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdateEmployeeServlet</servlet-name>
+        <url-pattern>/employee/update</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

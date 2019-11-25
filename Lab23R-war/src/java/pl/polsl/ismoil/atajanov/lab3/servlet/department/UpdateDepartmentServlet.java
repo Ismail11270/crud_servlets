@@ -21,24 +21,29 @@ import pl.polsl.ismoil.atajanov.lab3.beans.DepartmentServiceBean;
 import pl.polsl.ismoil.atajanov.lab3.model.Department;
 
 /**
- *
+ * Servlet used to update departments
  * @author Ismail
+ * @version 1.0
  */
 public class UpdateDepartmentServlet extends HttpServlet {
 
+    /**
+     * Ejb injection
+     */
     @EJB
     DepartmentServiceBean departmentService;
 
+
     /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
+     * Handles the HTTP <code>GET</code> method.
      *
      * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
@@ -46,6 +51,7 @@ public class UpdateDepartmentServlet extends HttpServlet {
             out.println("<html>");
             out.println("<head>");
             out.println("<title>[CRUD]Update department</title>");
+            out.println("<h2>leave field blank if no change is required</h2>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Updating a Department</h1>");
@@ -63,21 +69,6 @@ public class UpdateDepartmentServlet extends HttpServlet {
     }
 
     /**
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        processRequest(request, response);
-
-    }
-
-    /**
      * Handles the HTTP <code>POST</code> method.
      *
      * @param request servlet request
@@ -90,14 +81,14 @@ public class UpdateDepartmentServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         List<String> errors = new ArrayList<>();
-        
+
         incrementCounter(request);
-        
-         try (PrintWriter out = response.getWriter()) {
+
+        try (PrintWriter out = response.getWriter()) {
             String depId = request.getParameter("dep_id");
             String newName = request.getParameter("dep_name");
             String newAddress = request.getParameter("dep_address");
-            
+
             Integer id = 0;
             try {
                 id = Integer.parseInt(depId);
@@ -112,25 +103,25 @@ public class UpdateDepartmentServlet extends HttpServlet {
                 request.setAttribute("errors", errors);
                 request.getRequestDispatcher("/error/delete").forward(request, response);
             }
-            if(!newName.equals("")) {
+            if (!newName.equals("")) {
                 department.setDepartmentName(newName);
             }
-            if(!newAddress.equals("")) {
+            if (!newAddress.equals("")) {
                 department.setAddress(newAddress);
             }
             departmentService.updateDepartment(department);
             out.println("<!DOCTYPE html>");
-                out.println("<html>");
-                out.println("<head>");
-                out.println("<title>[CRUD]Update department</title>");
-                out.println("</head>");
-                out.println("<body>");
-                out.println("<h1>Updating a Department</h1>");
-                out.println("<p>Department updated successfully!</p>");
-                out.println("</br><a href=\"" + request.getContextPath() + "/\">Go back</a>");
-                out.println("</body>");
-                out.println("</html>");
-         }
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>[CRUD]Update department</title>");
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<h1>Updating a Department</h1>");
+            out.println("<p>Department updated successfully!</p>");
+            out.println("</br><a href=\"" + request.getContextPath() + "/\">Go back</a>");
+            out.println("</body>");
+            out.println("</html>");
+        }
 
     }
 
@@ -146,6 +137,7 @@ public class UpdateDepartmentServlet extends HttpServlet {
 
     /**
      * Increment operation counter
+     *
      * @param request servlet request
      */
     private void incrementCounter(HttpServletRequest request) {
@@ -165,23 +157,26 @@ public class UpdateDepartmentServlet extends HttpServlet {
             session.setAttribute("counterMap", counterMap);
         }
     }
-    
+
     /**
      * Method returns counter of performed operations
+     *
      * @param request servlet request
      * @return number of performed operations
      */
-    private int getOperationCounter(HttpServletRequest request){
+    private int getOperationCounter(HttpServletRequest request) {
         HttpSession session = request.getSession();
 
         Map<String, Integer> counterMap
                 = (Map<String, Integer>) session.getAttribute("counterMap");
         if (counterMap == null) {
             return 0;
-        } 
+        }
         String name = "update_department";
         if (counterMap.containsKey(name)) {
             return counterMap.get(name);
-        } else return 0;
+        } else {
+            return 0;
+        }
     }
 }
