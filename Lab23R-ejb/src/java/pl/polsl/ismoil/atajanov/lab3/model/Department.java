@@ -82,7 +82,7 @@ public class Department implements Serializable {
      * @return current id of the department
      */
     public Integer getId() {
-        return id;
+        return id == null ? null : id;
     }
     
     /**

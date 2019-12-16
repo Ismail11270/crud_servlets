@@ -113,10 +113,12 @@ public class FindEmployeeServlet extends HttpServlet {
             out.println("<table width='100%' border='1'>");
             out.println("<tr><th>id</th><th>Employee name</th><th>Employee birthdate</th><th>Department id</th></tr>");
             for (Employee e : employees) {
+                Department dep = e.getDepartment();
+                String depId = dep==null ? "undefined" : String.valueOf(dep.getId());
                 out.println("<tr><td>" + e.getId() + "</td>");
                 out.println("<td>" + e.getFullName()+ "</td>");
                 out.println("<td>" + e.getBirthDate().toString() + "</td>");
-                out.println("<td>" + e.getDepartment().getId() + "</td>");
+                out.println("<td>" + depId + "</td>");
             }
             out.println("</table>");
             out.println("</br><a href=\"" + request.getContextPath() + "/\">Go back</a>");
