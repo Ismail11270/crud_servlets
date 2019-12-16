@@ -22,24 +22,24 @@ import pl.polsl.ismoil.atajanov.lab3.beans.DepartmentServiceBean;
 
 /**
  * Servlet used to add employees
+ *
  * @author Ismail
  * @version 1.0
  */
 public class AddEmployeeServlet extends HttpServlet {
 
-    
     /**
      * Ejb injection
      */
     @EJB
     EmployeeServiceBean employeeService;
 
-    
     /**
      * Ejb injection
      */
     @EJB
     DepartmentServiceBean departmentService;
+
     /**
      * Handles the HTTP <code>GET</code> method.
      *
@@ -97,7 +97,7 @@ public class AddEmployeeServlet extends HttpServlet {
             try {
                 date = new SimpleDateFormat("MM/dd/yyyy").parse(birthDate);
             } catch (ParseException e) {
-                 errors.add("Invalid date input!");
+                errors.add("Invalid date input!");
             }
             if (fullName.equals("")) {
                 errors.add("Employee's name cannot be empty!");
@@ -116,20 +116,20 @@ public class AddEmployeeServlet extends HttpServlet {
             if (!errors.isEmpty()) {
                 request.setAttribute("errors", errors);
                 request.getRequestDispatcher("/error/add").forward(request, response);
+            } else {
+                Employee employee = new Employee(fullName, date, department);
+                employeeService.addEmployee(employee);
+                out.println("<!DOCTYPE html>");
+                out.println("<html>");
+                out.println("<head>");
+                out.println("<title>[CRUD]Add Employee </title>");
+                out.println("</head>");
+                out.println("<body>");
+                out.println("<h1>Employee added!</h1>");
+                out.println("</br><a href=\"" + request.getContextPath() + "/\">Go back</a>");
+                out.println("</body>");
+                out.println("</html>");
             }
-            
-            Employee employee = new Employee(fullName, date, department);
-            employeeService.addEmployee(employee);
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>[CRUD]Add Employee </title>");
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Employee added!</h1>");
-            out.println("</br><a href=\"" + request.getContextPath() + "/\">Go back</a>");
-            out.println("</body>");
-            out.println("</html>");
         }
     }
 

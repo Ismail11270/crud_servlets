@@ -17,6 +17,7 @@ import pl.polsl.ismoil.atajanov.lab3.model.Department;
 
 /**
  * Servlet used to add departments
+ *
  * @author Ismail
  * @version 1.0
  */
@@ -91,20 +92,21 @@ public class AddDepartmentServlet extends HttpServlet {
             if (!errors.isEmpty()) {
                 request.setAttribute("errors", errors);
                 request.getRequestDispatcher("/error/add").forward(request, response);
+            } else {
+                Department department = new Department(departmentName, departmentAddress);
+                departmentService.addDepartment(department);
+                out.println("<!DOCTYPE html>");
+                out.println("<html>");
+                out.println("<head>");
+                out.println("<title>[CRUD]Add Department </title>");
+                out.println("</head>");
+                out.println("<body>");
+                out.println("<h1>Department added!</h1>");
+                out.println("<p>" + department.toString() + "</p>");
+                out.println("</br><a href=\"" + request.getContextPath() + "/\">Go back</a>");
+                out.println("</body>");
+                out.println("</html>");
             }
-            Department department = new Department(departmentName, departmentAddress);
-            departmentService.addDepartment(department);
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>[CRUD]Add Department </title>");
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Department added!</h1>");
-            out.println("<p>" + department.toString() + "</p>");
-            out.println("</br><a href=\"" + request.getContextPath() + "/\">Go back</a>");
-            out.println("</body>");
-            out.println("</html>");
         }
     }
 

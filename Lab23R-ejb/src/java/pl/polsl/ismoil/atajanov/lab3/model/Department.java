@@ -3,6 +3,7 @@ package pl.polsl.ismoil.atajanov.lab3.model;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -71,8 +72,8 @@ public class Department implements Serializable {
     /**
      * List of all employees
      */
-    @OneToMany(mappedBy = "department", fetch=FetchType.EAGER)
-    @JoinColumn(name = "employees_list")
+    @OneToMany(mappedBy = "department", cascade=CascadeType.ALL, orphanRemoval = true)
+//    @JoinColumn(name = "employees_list")
     private List<Employee> employees = new ArrayList<>();
     
    

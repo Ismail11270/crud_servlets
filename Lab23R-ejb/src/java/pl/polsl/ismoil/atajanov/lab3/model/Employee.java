@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -76,8 +77,8 @@ public class Employee implements Serializable{
     /**
      * Employee's department column
      */
-    @ManyToOne
-    @JoinColumn(name="department_id",nullable = false)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="department_id")
     private Department department;
 
     /**
